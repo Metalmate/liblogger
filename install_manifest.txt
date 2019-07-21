@@ -1,6 +1,4 @@
-/usr/local/lib/liblogger.so.0.0.2
-/usr/local/lib/liblogger.so.0
-/usr/local/lib/liblogger.so
+/usr/local/lib/liblogger.a
 /usr/local/include/logger/logger.h
 /usr/local/lib/cmake/Logging/LoggingTargets.cmake
 /usr/local/lib/cmake/Logging/LoggingTargets-noconfig.cmake

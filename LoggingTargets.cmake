@@ -42,7 +42,7 @@ unset(_expectedTargets)
 
 
 # Create imported target Logging::Logging
-add_library(Logging::Logging SHARED IMPORTED)
+add_library(Logging::Logging STATIC IMPORTED)
 
 set_target_properties(Logging::Logging PROPERTIES
   INTERFACE_COMPILE_FEATURES "cxx_std_17"
@@ -52,8 +52,8 @@ set_target_properties(Logging::Logging PROPERTIES
 # Import target "Logging::Logging" for configuration ""
 set_property(TARGET Logging::Logging APPEND PROPERTY IMPORTED_CONFIGURATIONS NOCONFIG)
 set_target_properties(Logging::Logging PROPERTIES
-  IMPORTED_LOCATION_NOCONFIG "/home/miquell/projects/libraries/liblogger/liblogger.so.0.0.2"
-  IMPORTED_SONAME_NOCONFIG "liblogger.so.0.0.2"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_NOCONFIG "CXX"
+  IMPORTED_LOCATION_NOCONFIG "/home/miquell/projects/libraries/liblogger/liblogger.a"
   )
 
 # This file does not depend on other imported targets which have

@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/miquell/projects/libraries/liblogger/src/logger.cpp
+logger/logger.h
+/home/miquell/projects/libraries/liblogger/src/logger/logger.h
+iostream
+-
+cstdlib
+-
+ctime
+-
+mutex
+-
+chrono
+-
+cstdint
+-
+iomanip
+-
+ctime
+-
+

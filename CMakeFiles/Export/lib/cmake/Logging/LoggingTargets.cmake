@@ -51,7 +51,7 @@ if(_IMPORT_PREFIX STREQUAL "/")
 endif()
 
 # Create imported target Logging::Logging
-add_library(Logging::Logging SHARED IMPORTED)
+add_library(Logging::Logging STATIC IMPORTED)
 
 set_target_properties(Logging::Logging PROPERTIES
   INTERFACE_COMPILE_FEATURES "cxx_std_17"

@@ -65,13 +65,87 @@ CMAKE_SOURCE_DIR = /home/miquell/projects/libraries/liblogger
 CMAKE_BINARY_DIR = /home/miquell/projects/libraries/liblogger
 
 #=============================================================================
+# Target rules for target CMakeFiles/logger_shared.dir
+
+# All Build rule for target.
+CMakeFiles/logger_shared.dir/all: CMakeFiles/objlib.dir/all
+	$(MAKE) -f CMakeFiles/logger_shared.dir/build.make CMakeFiles/logger_shared.dir/depend
+	$(MAKE) -f CMakeFiles/logger_shared.dir/build.make CMakeFiles/logger_shared.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/miquell/projects/libraries/liblogger/CMakeFiles --progress-num=2 "Built target logger_shared"
+.PHONY : CMakeFiles/logger_shared.dir/all
+
+# Include target in all.
+all: CMakeFiles/logger_shared.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/logger_shared.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/miquell/projects/libraries/liblogger/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/logger_shared.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/miquell/projects/libraries/liblogger/CMakeFiles 0
+.PHONY : CMakeFiles/logger_shared.dir/rule
+
+# Convenience name for target.
+logger_shared: CMakeFiles/logger_shared.dir/rule
+
+.PHONY : logger_shared
+
+# clean rule for target.
+CMakeFiles/logger_shared.dir/clean:
+	$(MAKE) -f CMakeFiles/logger_shared.dir/build.make CMakeFiles/logger_shared.dir/clean
+.PHONY : CMakeFiles/logger_shared.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/logger_shared.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/objlib.dir
+
+# All Build rule for target.
+CMakeFiles/objlib.dir/all:
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make CMakeFiles/objlib.dir/depend
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make CMakeFiles/objlib.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/miquell/projects/libraries/liblogger/CMakeFiles --progress-num=3 "Built target objlib"
+.PHONY : CMakeFiles/objlib.dir/all
+
+# Include target in all.
+all: CMakeFiles/objlib.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/objlib.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/miquell/projects/libraries/liblogger/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/objlib.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/miquell/projects/libraries/liblogger/CMakeFiles 0
+.PHONY : CMakeFiles/objlib.dir/rule
+
+# Convenience name for target.
+objlib: CMakeFiles/objlib.dir/rule
+
+.PHONY : objlib
+
+# clean rule for target.
+CMakeFiles/objlib.dir/clean:
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make CMakeFiles/objlib.dir/clean
+.PHONY : CMakeFiles/objlib.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/objlib.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/logger.dir
 
 # All Build rule for target.
-CMakeFiles/logger.dir/all:
+CMakeFiles/logger.dir/all: CMakeFiles/objlib.dir/all
 	$(MAKE) -f CMakeFiles/logger.dir/build.make CMakeFiles/logger.dir/depend
 	$(MAKE) -f CMakeFiles/logger.dir/build.make CMakeFiles/logger.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/miquell/projects/libraries/liblogger/CMakeFiles --progress-num=1,2 "Built target logger"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/miquell/projects/libraries/liblogger/CMakeFiles --progress-num=1 "Built target logger"
 .PHONY : CMakeFiles/logger.dir/all
 
 # Include target in all.

@@ -1,11 +1,15 @@
 cmake_minimum_required(VERSION 3.14.5)
-project(liblogger VERSION 0.0.2 LANGUAGES CXX)
+project(liblogger VERSION 1.0.0.0 LANGUAGES CXX DESCRIPTION "Logger for C++ projects." HOMEPAGE_URL "")
 
 list(INSERT CMAKE_MODULE_PATH 0 ${CMAKE_SOURCE_DIR}/cmake)
 
-add_library(logger
-    src/logger.cpp
-)
+set(libsrc src/logger.cpp)
+add_library(objlib OBJECT ${libsrc})
+
+set_property(TARGET objlib PROPERTY POSITION_INDEPENDENT_CODE 1)
+
+add_library(logger_shared SHARED $<TARGET_OBJECTS:objlib>)
+add_library(logger STATIC $<TARGET_OBJECTS:objlib>)
 
 add_library(Logging::logger ALIAS logger)
 
@@ -36,8 +40,7 @@ install(TARGETS logger
 #This is required so that the exported target has the name Logging and not logger
 set_target_properties(logger PROPERTIES EXPORT_NAME Logging)
 set_target_properties(logger PROPERTIES VERSION ${PROJECT_VERSION})
-set_target_properties(logger PROPERTIES SOVERSION ${PROJECT_VERSION})
-set_target_properties(logger PROPERTIES PUBLIC_HEADER include/logger/logger.h)
+set_target_properties(logger PROPERTIES SOVERSION ${PROJECT_VERSION_MAJOR})
 
 install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 

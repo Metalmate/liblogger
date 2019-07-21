@@ -56,16 +56,39 @@ CMAKE_BINARY_DIR = /home/miquell/projects/libraries/liblogger
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/opt/cmake-3.14.5-Linux-x86_64/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : edit_cache
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/opt/cmake-3.14.5-Linux-x86_64/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
 
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/opt/cmake-3.14.5-Linux-x86_64/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
 
-.PHONY : edit_cache/fast
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/opt/cmake-3.14.5-Linux-x86_64/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/opt/cmake-3.14.5-Linux-x86_64/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # Special rule for the target install/strip
 install/strip: preinstall
@@ -90,39 +113,16 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/opt/cmake-3.14.5-Linux-x86_64/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
 
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
 
-.PHONY : list_install_components/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/opt/cmake-3.14.5-Linux-x86_64/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/opt/cmake-3.14.5-Linux-x86_64/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/opt/cmake-3.14.5-Linux-x86_64/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/opt/cmake-3.14.5-Linux-x86_64/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -157,6 +157,32 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named logger_shared
+
+# Build rule for target.
+logger_shared: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 logger_shared
+.PHONY : logger_shared
+
+# fast build rule for target.
+logger_shared/fast:
+	$(MAKE) -f CMakeFiles/logger_shared.dir/build.make CMakeFiles/logger_shared.dir/build
+.PHONY : logger_shared/fast
+
+#=============================================================================
+# Target rules for targets named objlib
+
+# Build rule for target.
+objlib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 objlib
+.PHONY : objlib
+
+# fast build rule for target.
+objlib/fast:
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make CMakeFiles/objlib.dir/build
+.PHONY : objlib/fast
+
+#=============================================================================
 # Target rules for targets named logger
 
 # Build rule for target.
@@ -175,7 +201,7 @@ src/logger.o: src/logger.cpp.o
 
 # target to build an object file
 src/logger.cpp.o:
-	$(MAKE) -f CMakeFiles/logger.dir/build.make CMakeFiles/logger.dir/src/logger.cpp.o
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make CMakeFiles/objlib.dir/src/logger.cpp.o
 .PHONY : src/logger.cpp.o
 
 src/logger.i: src/logger.cpp.i
@@ -184,7 +210,7 @@ src/logger.i: src/logger.cpp.i
 
 # target to preprocess a source file
 src/logger.cpp.i:
-	$(MAKE) -f CMakeFiles/logger.dir/build.make CMakeFiles/logger.dir/src/logger.cpp.i
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make CMakeFiles/objlib.dir/src/logger.cpp.i
 .PHONY : src/logger.cpp.i
 
 src/logger.s: src/logger.cpp.s
@@ -193,7 +219,7 @@ src/logger.s: src/logger.cpp.s
 
 # target to generate assembly for a file
 src/logger.cpp.s:
-	$(MAKE) -f CMakeFiles/logger.dir/build.make CMakeFiles/logger.dir/src/logger.cpp.s
+	$(MAKE) -f CMakeFiles/objlib.dir/build.make CMakeFiles/objlib.dir/src/logger.cpp.s
 .PHONY : src/logger.cpp.s
 
 # Help Target
@@ -202,13 +228,15 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... edit_cache"
+	@echo "... install/local"
+	@echo "... install"
+	@echo "... logger_shared"
+	@echo "... objlib"
+	@echo "... list_install_components"
 	@echo "... install/strip"
 	@echo "... logger"
 	@echo "... rebuild_cache"
-	@echo "... list_install_components"
-	@echo "... install/local"
-	@echo "... install"
+	@echo "... edit_cache"
 	@echo "... src/logger.o"
 	@echo "... src/logger.i"
 	@echo "... src/logger.s"

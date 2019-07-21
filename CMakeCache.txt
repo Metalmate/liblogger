@@ -14,9 +14,6 @@
 # EXTERNAL cache entries
 ########################
 
-//Build shared library
-BUILD_SHARED_LIBS:BOOL=ON
-
 //Path to a program.
 CMAKE_AR:FILEPATH=/usr/bin/ar
 
