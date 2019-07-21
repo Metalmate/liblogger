@@ -9,6 +9,8 @@ add_library(logger
 
 add_library(Logging::logger ALIAS logger)
 
+target_compile_features(logger PUBLIC cxx_std_17)
+
 target_include_directories(logger
     PUBLIC
         $<INSTALL_INTERFACE:include>
@@ -27,10 +29,15 @@ install(TARGETS logger
     EXPORT logger-targets
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
 
 #This is required so that the exported target has the name Logging and not logger
 set_target_properties(logger PROPERTIES EXPORT_NAME Logging)
+set_target_properties(logger PROPERTIES VERSION ${PROJECT_VERSION})
+set_target_properties(logger PROPERTIES SOVERSION ${PROJECT_VERSION})
+set_target_properties(logger PROPERTIES PUBLIC_HEADER include/logger/logger.h)
 
 install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 

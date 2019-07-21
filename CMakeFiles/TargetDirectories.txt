@@ -1,0 +1,7 @@
+/home/miquell/projects/libraries/liblogger/CMakeFiles/edit_cache.dir
+/home/miquell/projects/libraries/liblogger/CMakeFiles/install/strip.dir
+/home/miquell/projects/libraries/liblogger/CMakeFiles/logger.dir
+/home/miquell/projects/libraries/liblogger/CMakeFiles/rebuild_cache.dir
+/home/miquell/projects/libraries/liblogger/CMakeFiles/list_install_components.dir
+/home/miquell/projects/libraries/liblogger/CMakeFiles/install/local.dir
+/home/miquell/projects/libraries/liblogger/CMakeFiles/install.dir
